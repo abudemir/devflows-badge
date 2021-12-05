@@ -27,7 +27,7 @@ def handler(event, context):
                 SourceLanguageCode=body["originalLanguageCode"], 
                 TargetLanguageCode=lang
             )
-            result.insert({
+            result.append({
             "translatedText" : resp["TranslatedText"],
             "language": lang
             })
