@@ -6,7 +6,7 @@ from src.output_formatter import get_error_output
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-
+ 
 """
 Write your code here.
 """
