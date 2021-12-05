@@ -12,11 +12,13 @@ Write your code here.
 """
 def handler(event, context):
     try:
-        body = json.loads(event)['body']
+        ev = json.loads(event)
+        body = ev['body']
         response = {
             'statusCode': 200,
             'request_id': body['request_id'],
             'fields': body['event']['fields'],
+            'ev': ev,
             'body': body
         }
 
