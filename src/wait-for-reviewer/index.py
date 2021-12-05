@@ -16,6 +16,7 @@ def handler(event, context):
         response = {
             'statusCode': 200,
             'request_id': body['request_id'],
+            'fields': body['event']['fields'],
             'body': body
         }
 
