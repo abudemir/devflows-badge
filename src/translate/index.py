@@ -20,17 +20,18 @@ def handler(event, context):
 
         client = boto3.client('translate', region_name="us-east-1")
 
-        for lang in body["translationLanguages"]:
-            print(lang)
-            resp = client.translate_text(
-                Text=body["text"], 
-                SourceLanguageCode=body["originalLanguageCode"], 
-                TargetLanguageCode=lang
-            )
-            result.append({
-            "translatedText" : resp["TranslatedText"],
-            "language": lang
-            })
+        if body["originalLanguageCode"] in ["en", "ar", "zh", "fr", "de", "hi", "it", "ja","ko", "pt", "ru","es"]:
+            for lang in body["translationLanguages"]:
+                print(lang)
+                resp = client.translate_text(
+                    Text=body["text"], 
+                    SourceLanguageCode=body["originalLanguageCode"], 
+                    TargetLanguageCode=lang
+                )
+                result.append({
+                "translatedText" : resp["TranslatedText"],
+                "language": lang
+                })
 
         return get_success_output(200, {"result": result})
     except:
